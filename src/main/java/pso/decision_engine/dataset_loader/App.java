@@ -34,6 +34,7 @@ public class App {
 			};
 			
 			Path tempout=Paths.get("temp",tempFileName);
+			System.out.print("Retreiving data from database");
 			Class.forName(c.getDbDriverClass());
 			try (Connection conn = DriverManager.getConnection(c.getDbConnectionString(), c.getDbUser(), c.getDbPassword())) {
 			try(BufferedWriter writer = Files.newBufferedWriter(tempout, Charset.forName("UTF-8"))) {
@@ -50,6 +51,12 @@ public class App {
 				}
 				writer.flush();
 			}}}}
+			System.out.println(" -> Done");
+			System.out.println("Sending data");
+			
+			HttpClient.send(c, tempout.toFile());
+			
+			System.out.println(" -> Done");
 		} catch (Exception e) {
 			System.out.println("FATAL ERROR: "+e.getMessage());
 			e.printStackTrace();

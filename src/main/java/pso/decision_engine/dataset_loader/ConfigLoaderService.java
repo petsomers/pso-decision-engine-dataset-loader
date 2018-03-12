@@ -11,15 +11,22 @@ public class ConfigLoaderService {
 		Config c=new Config();
 		Props p=new Props();
 		p.load(new File(fileName));
-		c.setDbDriverClass(p.getValue("dbDriverClass"));
-		c.setDbConnectionString(p.getValue("dbConnectionString"));
-		c.setDbUser(p.getValue("dbUser"));
-		c.setDbPassword(p.getValue("dbPassword"));
+		c.setDbDriverClass(p.getValue("db.driverClass"));
+		c.setDbConnectionString(p.getValue("db.connectionString"));
+		c.setDbUser(p.getValue("db.user"));
+		c.setDbPassword(p.getValue("db.password"));
 		c.setSql(p.getValue("sql"));
-		c.setDataSetName(p.getValue("dataSetName"));
-		c.setDataSetType(p.getValue("dataSetType"));
-		c.setHeader(p.getValue("header"));
-		c.setDecisionEngineUrl(p.getValue("decisionEngineUrl"));
+		c.setDataSetName(p.getValue("dataSet.name"));
+		c.setDataSetType(p.getValue("dataSet.type"));
+		c.setHeader(p.getValue("dataSet.header"));
+		c.setDecisionEngineUrl(p.getValue("decisionEngine.url"));
+		c.setDecisionEngineUser(p.getValue("decisionEngine.user"));
+		c.setDecisionEnginePassword(p.getValue("decisionEngine.password"));
+		c.setUseProxyServer("true".equals(p.getValue("proxyServer.use")));
+		c.setProxyServerHost(p.getValue("proxyServer.host"));
+		try {
+			c.setProxyServerPort(Integer.parseInt(p.getValue("proxyServer.port")));
+		} catch (NumberFormatException e) {}
 		return c;
 	}
 }

@@ -13,4 +13,10 @@ public class Config {
 	private String dataSetType;
 	private String header;
 	private String decisionEngineUrl;
+	private String decisionEngineUser;
+	private String decisionEnginePassword;
+	
+	private boolean useProxyServer;
+	private String proxyServerHost;
+	private int proxyServerPort;
 }
