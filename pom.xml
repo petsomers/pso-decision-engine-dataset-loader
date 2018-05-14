@@ -4,7 +4,7 @@
 	<groupId>pso</groupId>
 	<artifactId>decision_engine_dataset_loader</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>decision_engine_dataset_loader</name>
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
